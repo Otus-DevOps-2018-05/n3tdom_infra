@@ -1,3 +1,6 @@
+bastion_IP = 35.228.119.210
+someinternalhost_IP = 10.166.0.3
+
 # n3tdom_infra
 n3tdom Infra repository
 

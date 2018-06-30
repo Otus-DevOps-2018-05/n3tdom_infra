@@ -3,6 +3,17 @@ n3tdom Infra repository
 
 ---
 
+## hw terraform-1
+
+### Самостоятельные задания 1-4
+    Д
+
+### Задание со *
+
+
+
+---
+
 ## hw packer-base
 
 ### Самостоятельное задание 1 и 2 - параметризация
@@ -28,9 +39,11 @@ Via file
         "network":""
 
 ### Задание со * #1 - образ с автозапуском приложения
+
 Образ сделан поверх существующего reddit-base
 Собрать можно командой packer build -var-file immutable_variables.json immutable.json
 Запустить можно через create-reddit-vm.sh
+
 ---
 
 ## hw cloud-testapp

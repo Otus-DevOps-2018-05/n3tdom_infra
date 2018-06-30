@@ -1,0 +1,7 @@
+{
+    "project_id": "project",
+    "source_image_family": "ubuntu-1604-lts",
+    "machine_type": "f1-micro",
+    "image_description": "image description has been specified",
+    "tags": "networklabels"
+}

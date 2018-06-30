@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 #./install_ruby.sh
 apt update
@@ -13,10 +14,10 @@ systemctl enable mongod
 systemctl start mongod
 
 #./deploy.sh
-workdir="/opt"
-cd $workdir
-git clone -b monolith https://github.com/express42/reddit.git
-cd ./reddit
+set -e
+
+git clone -b monolith https://github.com/express42/reddit.git $HOME/reddit
+cd $HOME/reddit
 bundle install
 
 #launch

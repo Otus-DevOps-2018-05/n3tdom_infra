@@ -6,10 +6,21 @@ n3tdom Infra repository
 ## hw terraform-1
 
 ### Самостоятельные задания 1-4
-    Д
+    
 
-### Задание со *
+### Задание со * #1
+Исходил из следующей инфы:
+Adding or removing project-wide public SSH keys > api
+https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys
+google_compute_project_metadata_item 
+https://www.terraform.io/docs/providers/google/r/compute_project_metadata_item.html
+https://www.terraform.io/docs/import/index.html
 
+0. gcloud compute project-info describe
+1. Добавил в конфигурацию инфо о ресурсе и переменную (оставил пустой)
+2. Сделал `terraform import google_compute_project_metadata_item.default ssh-keys`
+3. Заполнил переменную в соотв. с инфо в api
+4. terraform plan / apply
 
 
 ---

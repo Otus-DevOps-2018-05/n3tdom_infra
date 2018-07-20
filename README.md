@@ -1,30 +1,37 @@
-bastion_IP = 35.228.119.210
-someinternalhost_IP = 10.166.0.3
-
 # n3tdom_infra
 n3tdom Infra repository
 
-## Подключение через промежуточный хост одной командой:
-    ssh -J n3tdom@35.228.119.210 n3tdom@10.166.0.3
+## Дополнительное задание: startup scirpt
+См startup.sh
 
-## Подключение через промежуточный хост алиасом:
-### ssh_config
-    Host gcp-bastion
-        Hostname 35.228.119.210
-        Port 22
-        User n3tdom
-        IdentityFile /home/n3tdom/.ssh/my-cloud
-        ForwardAgent yes
+### Локально
+    gcloud compute instances create reddit-app\
+    --boot-disk-size=10GB \
+    --image-family ubuntu-1604-lts \
+    --image-project=ubuntu-os-cloud \
+    --machine-type=g1-small \
+    --tags puma-server \
+    --restart-on-failure \
+    --metadata-from-file startup-script=startup.sh
 
-    Host gcp-int
-        Hostname 10.166.0.3
-        Port 22
-        User n3tdom
-        ProxyJump gcp-bastion
+### По вебу
+    gcloud compute instances create reddit-app\
+    --boot-disk-size=10GB \
+    --image-family ubuntu-1604-lts \
+    --image-project=ubuntu-os-cloud \
+    --machine-type=g1-small \
+    --tags puma-server \
+    --restart-on-failure \
+    --metadata startup-script-url=gs://bucket/startupscript.sh
 
-### Подключение
-    ➜  n3tdom_infra git:(cloud-bastion) ✗ ssh gcp-int
-    Last login: Sun Jun 24 12:20:30 2018 from 10.166.0.2
-    n3tdom@someinternalhost:~$ 
+## Дополнительное задание: firewall
+gcloud compute firewall-rules create "default-puma-server-9292" \
+      --allow tcp:9292 \
+      --source-ranges="0.0.0.0/0" \
+      --target-tags=puma-server  \
+      --description="HTTP access"
 
-Источник https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts
+## Connection info
+### cloud-testapp
+testapp_IP = 35.228.152.234
+testapp_port = 9292

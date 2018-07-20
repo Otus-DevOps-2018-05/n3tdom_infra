@@ -1,0 +1,11 @@
+{
+    "project_id": "project",
+    "source_image_family": "ubuntu-1604-lts",
+    "machine_type": "f1-micro",
+    "ssh_username": "user",
+    "image_description": "image description has been specified",
+    "disk_size": "10",
+    "disk_type": "pd-standard",
+    "tags": "web-server",
+    "network":"default"
+}

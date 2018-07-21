@@ -7,8 +7,7 @@ n3tdom Infra repository
 
 ### Самостоятельные задания 1-4
     
-
-### Задание со * #1
+### Задание со * #1 -  добавление ssh ключа пользователя appuser1 в метаданные проекта
 - Понять как составить конфиг для параметра было сложнее всего
     https://www.terraform.io/docs/providers/google/r/compute_project_metadata.html
     Adding or removing project-wide public SSH keys > api
@@ -25,6 +24,14 @@ n3tdom Infra repository
 - Итем google_compute_project_metadata_item с ключом ssh-keys уникален для проекта, т.е. может быть только один
 - terraform apply ожидаемо стирает добавленный через веб-интерфейс ключ.
 
+
+### Задание со * #2 - создание HTTP балансировщика (WIP)
+1. В веб интерфейсе GCP > Load Balancers в advanced view создал необходимые итемы для лоад балансера.
+2. После того как схема заработала - импортировал код в терраформ помощью команд вида:
+     terraform import google_compute_http_health_check.default reddit-check
+3. После чего terraform apply показывает какие параметры не дефолтные, их остается задать в lb.tf
+
+Отдельно, добавил count к **instance**
 
 ---
 

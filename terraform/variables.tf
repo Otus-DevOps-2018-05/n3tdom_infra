@@ -22,3 +22,8 @@ variable zone {
 variable private_key {
   description = "Path to the private key used for ssh provisioning"
 }
+
+variable instance_count {
+  description = "How many instances to keep"
+  default     = "1"
+}

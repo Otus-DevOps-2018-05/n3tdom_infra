@@ -1,11 +1,13 @@
-project = "yourproject"
-
-zone = "europe-north1-a"
+project = "infra-"
 
 public_key_path = "~/.ssh/appuser.pub"
 
-private_key = "~/.ssh/appuser"
-
 disk_image = "reddit-base"
 
+zone = "europe-north1-a"
+
+private_key = "~/.ssh/appuser"
+
 instance_count = "1"
+
+source_ranges = ["0.0.0.0/0"]

@@ -1,8 +1,8 @@
 resource "google_compute_instance" "db" {
-  name         = "reddit-db"
+  name         = "reddit-db-${var.enviroment}"
   machine_type = "g1-small"
   zone         = "${var.zone}"
-  tags         = ["reddit-db"]
+  tags         = ["reddit-db-${var.enviroment}"]
 
   boot_disk {
     initialize_params {
@@ -22,7 +22,7 @@ resource "google_compute_instance" "db" {
 }
 
 resource "google_compute_firewall" "firewall_mongo" {
-  name    = "allow-mongo-default"
+  name    = "allow-mongo-default-${var.enviroment}"
   network = "default"
 
   allow {
@@ -31,8 +31,8 @@ resource "google_compute_firewall" "firewall_mongo" {
   }
 
   # правило применимо к инстансам с тегом ...
-  target_tags = ["reddit-db"]
+  target_tags = ["reddit-db-${var.enviroment}"]
 
   # порт будет доступен только для инстансов с тегом ...
-  source_tags = ["reddit-app"]
+  source_tags = ["reddit-app-${var.enviroment}"]
 }

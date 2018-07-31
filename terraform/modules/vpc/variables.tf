@@ -3,3 +3,7 @@ variable "source_ranges" {
   default     = ["0.0.0.0/0"]
   type        = "list"
 }
+
+variable enviroment {
+  description = "Adds name prefix to all objects"
+}

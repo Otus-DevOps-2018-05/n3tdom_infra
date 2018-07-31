@@ -2,6 +2,17 @@
 n3tdom Infra repository
 
 ---
+## hw-05 terraform-1
+
+### Задание со * #1 - remote backend
+После добавления backend 
+- Состояние обьектов видно при отсутствии локального tfstate
+- В момент ожидания тераформом подтверждения terraform apply создается файл блокировки. Паралельное применение конфигураций не возможно:
+Error: Error locking state: Error acquiring the state lock: writing "gs://n3tdom-stage/tfstate/default.tflock" failed: googleapi: Error 412: Precondition Failed, conditionNotMet
+
+
+
+
 
 ## hw-04 terraform-1
 

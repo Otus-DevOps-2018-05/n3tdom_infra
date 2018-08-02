@@ -1,48 +1,40 @@
 {
-  "all": {
-    "hosts": [
-      "35.204.231.192",
-      "35.204.62.85"
-    ],
-    "vars": {
-      "app_external_ip": "35.204.231.192",
-      "db_external_ip": "35.204.62.85",
-      "db_internal_ip": "10.164.0.2"
-    }
-  },
-  "app": [
-    "35.204.231.192"
-  ],
-  "app.0": [
-    "35.204.231.192"
-  ],
-  "db": [
-    "35.204.62.85"
-  ],
-  "db.0": [
-    "35.204.62.85"
-  ],
-  "type_google_compute_instance": [
-    "35.204.231.192",
-    "35.204.62.85"
-  ]
-}
-
-{
-  "databases": {
-      "hosts": ["host1.example.com", "host2.example.com"],
-      "vars": {
-          "a": true
-      }
-  },
-  "webservers": ["host2.example.com", "host3.example.com"],
-  "atlanta": {
-      "hosts": ["host1.example.com", "host4.example.com", "host5.example.com"],
-      "vars": {
-          "b": false
-      },
-      "children": ["marietta", "5points"]
-  },
-  "marietta": ["host6.example.com"],
-  "5points": ["host7.example.com"]
+        "_meta": {
+            "hostvars": {
+                "appserver": {
+                    "ansible_host": "35.228.58.183"
+                },
+                "dbserver": {
+                    "ansible_host": "35.228.119.210"
+                }
+            }
+        },
+        "all": {
+            "children": [
+                "ungrouped",
+                "app",
+                "db"
+            ],
+            "hosts": [],
+            "vars": {}
+        },
+        "app": {
+            "children": [],
+            "hosts": [
+                "appserver"
+            ],
+            "vars": {}
+        },
+        "db": {
+            "children": [],
+            "hosts": [
+                "dbserver"
+            ],
+            "vars": {}
+        },
+        "ungrouped": {
+            "children": [],
+            "hosts": [],
+            "vars": {}
+        }
 }

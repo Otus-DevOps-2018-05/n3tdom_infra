@@ -1,9 +1,12 @@
 # n3tdom_infra
 n3tdom Infra repository
 - [n3tdom_infra](#n3tdom_infra)
+    - [hw-07 ansible-2](#hw-07-ansible-2)
+        - [Разделение задач по тегам, плейбукам.](#Разделение-задач-по-тегам-плейбукам)
+        - [Задание со * #1](#Задание-со--1)
     - [hw-06 ansible-1](#hw-06-ansible-1)
         - [Плейбук](#Плейбук)
-        - [Задание со * #1](#Задание-со--1)
+        - [Задание со * #1](#Задание-со--1-1)
     - [hw-05 terraform-1](#hw-05-terraform-1)
         - [Основное задание](#Основное-задание)
         - [Задание со * #1 - add remote backend](#Задание-со--1---add-remote-backend)
@@ -22,6 +25,22 @@ n3tdom Infra repository
     - [hw-01 cloud-bastion](#hw-01-cloud-bastion)
         - [Подключение через промежуточный хост одной командой:](#Подключение-через-промежуточный-хост-одной-командой)
         - [Подключение через промежуточный хост алиасом:](#Подключение-через-промежуточный-хост-алиасом)
+
+
+---
+## hw-07 ansible-2
+### Разделение задач по тегам, плейбукам. 
+- деплой приложения через плейбук
+- сборка пакер образов с использованием плейбуков ансибл. Билд образов нужно производить из корня репозитория
+    ```cd n3tdom_infra
+    packer validate -var-file=packer/variables.json packer/app.json
+    packer build -var-file=packer/variables.json packer/app.json
+    ```
+
+### Задание со * #1
+dynamic inventory реализован через gce.py
+
+Запуск ansible-playbook site.yml приводит к наполнению нужных хостов, указаны через anbible группу tag_reddit-app-stage
 
 
 ---

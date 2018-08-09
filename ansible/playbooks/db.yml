@@ -1,0 +1,21 @@
+---
+- name: Configure MongoDB hosts
+  hosts: 
+    - tag_reddit-db-*
+    - db
+  become: true
+  roles:
+    - db
+
+#thanks to loktionovam_infra
+  pre_tasks:
+    - name: Create ad-hoc group (group all found hosts under inventory group "db" for group_vars)
+      group_by: 
+        key: "db"
+
+#Print gathered facts
+    # - name: Print hostvars
+    #   debug:
+    #     var: hostvars[inventory_hostname]
+
+

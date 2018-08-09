@@ -11,3 +11,4 @@
 #ansible
 *.retry
 *.gce.ini
+jdauphant.nginx

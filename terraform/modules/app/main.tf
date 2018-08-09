@@ -40,6 +40,21 @@ resource "google_compute_firewall" "firewall_puma" {
   target_tags   = ["reddit-app-${var.enviroment}"]
 }
 
+resource "google_compute_firewall" "firewall_nginx" {
+  name    = "allow-nginx-default-${var.enviroment}"
+  network = "default"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["reddit-app-${var.enviroment}"]
+}
+
+
+
 # Provision instance
 
 resource "null_resource" "app" {

@@ -1,0 +1,16 @@
+---
+- name: Print ALL hostvars
+  debug:
+    var: hostvars[inventory_hostname]
+
+- name: Print selected hostvars
+  debug:
+    var: hostvars[inventory_hostname]['ansible_user']
+
+- name: Print host username
+  local_action: command whoami
+  register: username_on_the_host
+- debug: var=username_on_the_host
+
+# Another option is to add this line to template file:
+# Placed here by {{ lookup('env','USER') }} using Ansible, {{ ansible_date_time.date }}.

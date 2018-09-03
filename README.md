@@ -2,6 +2,23 @@
 n3tdom Infra repository
 
 ---
+## hw-05 terraform-1
+
+### Основное задание
+- Код разбит на модули и среды
+- В модулях параметризирована среда (prod / stage)
+- tfstate вынесены на remote-backend, gcs bucket
+
+### Задание со * #1 - add remote backend
+После добавления backend 
+- Состояние обьектов видно при отсутствии локального tfstate
+- В момент ожидания тераформом подтверждения terraform apply создается файл блокировки. Паралельное применение конфигураций не возможно:
+Error: Error locking state: Error acquiring the state lock: writing "gs://n3tdom-stage/tfstate/default.tflock" failed: googleapi: Error 412: Precondition Failed, conditionNotMet
+
+### Задание со * #2 - add provision
+- Добавлен ресурс провижена для инстанса app
+- db_address получается из output переменной и передается в ресурс провижена app
+- Пересобран packer образа db.json для изменения адреса на котором слушает mongod
 
 ## hw-04 terraform-1
 

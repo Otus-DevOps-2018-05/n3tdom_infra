@@ -4,7 +4,7 @@
             "source_image_family": null,
             "machine_type": "f1-micro",
             "ssh_username": "",
-            "image_description": "",
+            "image_description": "(n3tdom) Ubuntu 16.04 with MongoDB prebaked for reddit-app",
             "disk_size": "10",
             "disk_type": "pd-standard",
             "tags": "",

@@ -6,8 +6,12 @@ disk_image = "reddit-base"
 
 zone = "europe-north1-a"
 
-private_key = "~/.ssh/appuser"
+private_key_path = "~/.ssh/appuser"
 
 instance_count = "1"
 
 source_ranges = ["0.0.0.0/0"]
+
+enviroment = "prod"
+
+app_provision = "true"

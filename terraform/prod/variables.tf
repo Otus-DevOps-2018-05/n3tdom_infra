@@ -19,7 +19,7 @@ variable zone {
   description = "Zone"
 }
 
-variable private_key {
+variable private_key_path {
   description = "Path to the private key used for ssh provisioning"
 }
 
@@ -41,4 +41,13 @@ variable db_disk_image {
 variable source_ranges {
   description = "Allow IP"
   type        = "list"
+}
+
+variable enviroment {
+  description = "Adds name prefix to all objects"
+}
+
+variable app_provision {
+  description = "Provision instance with app"
+  default     = "true"
 }

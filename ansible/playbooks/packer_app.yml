@@ -1,13 +1,6 @@
 ---
-- name: install ruby env
+- name: Setup app
   hosts: all
   become: true
-  tasks:
-  - name: install ruby env
-    apt: 
-      name: "{{ item }}"
-      state: present
-    loop:
-      - ruby-full
-      - ruby-bundler
-      - build-essential
+  roles:
+    - app

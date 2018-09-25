@@ -1,4 +1,4 @@
-#packer variables
+#packer
 *variables.json
 
 #terraform
@@ -8,3 +8,6 @@
 *.tfvars
 .terraform/
 
+#ansible
+*.retry
+*.gce.ini

@@ -1,5 +1,6 @@
 ---
 - name: Debug
+  hosts: all
   tasks:
     - name: Print ALL hostvars
       debug:

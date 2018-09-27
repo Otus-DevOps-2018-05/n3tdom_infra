@@ -3,28 +3,30 @@ n3tdom Infra repository
 - [n3tdom_infra](#n3tdom_infra)
     - [hw-0x шаблон](#hw-0x-шаблон)
         - [](#)
-        - [Задание со * #1](#Задание-со--1)
+        - [Задание со * -](#Задание-со---)
+        - [Задание со ** -](#Задание-со---)
     - [hw-08 ansible-3](#hw-08-ansible-3)
-        - [](#1)
-        - [Задание со * #1](#Задание-со--1-1)
+        - [Основное](#Основное)
+        - [Задание со * - Работа с динамическим инвентори](#Задание-со----Работа-с-динамическим-инвентори)
+        - [Задание со ** - TravisCI + packer,terraform,ansible](#Задание-со----travisci--packerterraformansible)
     - [hw-07 ansible-2](#hw-07-ansible-2)
         - [Разделение задач по тегам, плейбукам.](#Разделение-задач-по-тегам-плейбукам)
-        - [Задание со * #1](#Задание-со--1-2)
+        - [Задание со *](#Задание-со-)
     - [hw-06 ansible-1](#hw-06-ansible-1)
         - [Плейбук](#Плейбук)
-        - [Задание со * #1](#Задание-со--1-3)
+        - [Задание со *](#Задание-со--1)
     - [hw-05 terraform-1](#hw-05-terraform-1)
         - [Основное задание](#Основное-задание)
-        - [Задание со * #1 - add remote backend](#Задание-со--1---add-remote-backend)
-        - [Задание со * #2 - add provision](#Задание-со--2---add-provision)
+        - [Задание со * - add remote backend](#Задание-со----add-remote-backend)
+        - [Задание со ** - add provision](#Задание-со----add-provision)
     - [hw-04 terraform-1](#hw-04-terraform-1)
         - [Самостоятельные задания 1-4](#Самостоятельные-задания-1-4)
-        - [Задание со * #1 - добавление ssh ключа пользователя appuser1 в метаданные проекта](#Задание-со--1---добавление-ssh-ключа-пользователя-appuser1-в-метаданные-проекта)
-        - [Задание со * #2 - создание HTTP балансировщика (WIP)](#Задание-со--2---создание-http-балансировщика-wip)
+        - [Задание со * - добавление ssh ключа пользователя appuser1 в метаданные проекта](#Задание-со----добавление-ssh-ключа-пользователя-appuser1-в-метаданные-проекта)
+        - [Задание со * - создание HTTP балансировщика (WIP)](#Задание-со----создание-http-балансировщика-wip)
     - [hw-03 packer-base](#hw-03-packer-base)
         - [Самостоятельное задание 1 и 2 - параметризация](#Самостоятельное-задание-1-и-2---параметризация)
         - [Самостоятельное задание 3 - дополнительные параметры](#Самостоятельное-задание-3---дополнительные-параметры)
-        - [Задание со * #1 - образ с автозапуском приложения](#Задание-со--1---образ-с-автозапуском-приложения)
+        - [Задание со * - образ с автозапуском приложения](#Задание-со----образ-с-автозапуском-приложения)
     - [hw-02 cloud-testapp](#hw-02-cloud-testapp)
         - [Дополнительное задание: startup scirpt](#Дополнительное-задание-startup-scirpt)
         - [Дополнительное задание: firewall](#Дополнительное-задание-firewall)
@@ -37,15 +39,25 @@ n3tdom Infra repository
 ### 
 
 
-### Задание со * #1
+### Задание со * -
 
+### Задание со ** -
 
 ---
 ## hw-08 ansible-3
-### 
+### Основное
+Разобрались с ролями, окружениями, group_vars
+ansuble vault, 
+
+### Задание со * - Работа с динамическим инвентори
+- prod и stage окружения используют свои gce.ini + gce.py как инвентарь
+- в gce.ini задан фильтр на хосты prod/stage окружения - вызов инвентаря выдает только хосты соответсвующего окружения:
+ansible-playbook -i environments/stage/gce.py playbooks/site.yml --diff --check
+
+### Задание со ** - TravisCI + packer,terraform,ansible
+TODO: Не выполнялось
 
 
-### Задание со * #1
 
 ---
 ## hw-07 ansible-2
@@ -57,7 +69,7 @@ n3tdom Infra repository
     packer build -var-file=packer/variables.json packer/app.json
     ```
 
-### Задание со * #1
+### Задание со *
 dynamic inventory реализован через gce.py
 Запуск ``` ansible-playbook site.yml ``` приводит к наполнению нужных хостов, указаны через anbible группы по типу tag_reddit-app-stage
 
@@ -67,7 +79,7 @@ dynamic inventory реализован через gce.py
 ### Плейбук
 После rm директории плейбук отрабатывает, а не просто сообщает о том что репозиторий уже склонирован, поэтому статус меняется на changed
 
-### Задание со * #1 
+### Задание со *
 Создан файл inventory.json по последнему примеру отсюда https://docs.ansible.com/ansible/latest/dev_guide/developing_inventory.html
 
 Так как по заданию нам хватит статической конфигурации, написан простой скрипт по команде inventory.sh --list выдающий исходный inventory.json
@@ -80,13 +92,13 @@ dynamic inventory реализован через gce.py
 - В модулях параметризирована среда (prod / stage)
 - tfstate вынесены на remote-backend, gcs bucket
 
-### Задание со * #1 - add remote backend
+### Задание со * - add remote backend
 После добавления backend 
 - Состояние обьектов видно при отсутствии локального tfstate
 - В момент ожидания тераформом подтверждения terraform apply создается файл блокировки. Паралельное применение конфигураций не возможно:
 Error: Error locking state: Error acquiring the state lock: writing "gs://n3tdom-stage/tfstate/default.tflock" failed: googleapi: Error 412: Precondition Failed, conditionNotMet
 
-### Задание со * #2 - add provision
+### Задание со ** - add provision
 - Добавлен ресурс провижена для инстанса app
 - db_address получается из output переменной и передается в ресурс провижена app
 - Пересобран packer образа db.json для изменения адреса на котором слушает mongod
@@ -95,7 +107,7 @@ Error: Error locking state: Error acquiring the state lock: writing "gs://n3tdom
 
 ### Самостоятельные задания 1-4
     
-### Задание со * #1 -  добавление ssh ключа пользователя appuser1 в метаданные проекта
+### Задание со * -  добавление ssh ключа пользователя appuser1 в метаданные проекта
 - Понять как составить конфиг для параметра было сложнее всего
     https://www.terraform.io/docs/providers/google/r/compute_project_metadata.html
     Adding or removing project-wide public SSH keys > api
@@ -113,7 +125,7 @@ Error: Error locking state: Error acquiring the state lock: writing "gs://n3tdom
 - terraform apply ожидаемо стирает добавленный через веб-интерфейс ключ.
 
 
-### Задание со * #2 - создание HTTP балансировщика (WIP)
+### Задание со * - создание HTTP балансировщика (WIP)
 1. В веб интерфейсе GCP > Load Balancers в advanced view создал необходимые итемы для лоад балансера.
 2. После того как схема заработала - импортировал код в терраформ помощью команд вида:
      terraform import google_compute_http_health_check.default reddit-check
@@ -147,7 +159,7 @@ Via file
         "tags": "",
         "network":""
 
-### Задание со * #1 - образ с автозапуском приложения
+### Задание со * - образ с автозапуском приложения
 
 Образ сделан поверх существующего reddit-base
 Собрать можно командой packer build -var-file immutable_variables.json immutable.json

@@ -1,0 +1,15 @@
+---
+- name: Configure app hosts
+  hosts:
+    - tag_reddit-app-*
+    - app
+  become: true
+  roles:
+    - app
+    - jdauphant.nginx
+
+#thanks to loktionovam_infra
+  pre_tasks:
+    - name: Create ad-hoc group (group all found hosts under inventory group "app" for group_vars)
+      group_by:
+        key: "app"

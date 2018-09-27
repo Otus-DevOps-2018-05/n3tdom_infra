@@ -1,6 +1,8 @@
 ---
 - name: Deploy on app hosts
-  hosts: tag_reddit-app-stage
+  hosts:
+    - tag_reddit-app-*
+    - app
   tasks:
     - name: Fetch the latest version of application code
       git:
@@ -8,7 +10,7 @@
         dest: /home/appuser/reddit
         version: monolith #which branch
       notify: restart puma
-    
+
     - name: Bundle install
       bundler:
         state: present

@@ -14,10 +14,10 @@ n3tdom Infra repository
         - [Задание со ** - TravisCI + packer,terraform,ansible](#Задание-со----travisci--packerterraformansible)
     - [hw-07 ansible-2](#hw-07-ansible-2)
         - [Основное задание - Разделение задач по тегам, плейбукам.](#Основное-задание---Разделение-задач-по-тегам-плейбукам)
-        - [Задание со *](#Задание-со--1)
+        - [Задание со * #1](#Задание-со--1)
     - [hw-06 ansible-1](#hw-06-ansible-1)
         - [Основное задание - Плейбук](#Основное-задание---Плейбук)
-        - [Задание со *](#Задание-со--2)
+        - [Задание со *](#Задание-со--1)
     - [hw-05 terraform-1](#hw-05-terraform-1)
         - [Основное задание](#Основное-задание-2)
         - [Задание со * - add remote backend](#Задание-со----add-remote-backend)
@@ -83,7 +83,7 @@ TODO: Не выполнялось
     packer build -var-file=packer/variables.json packer/app.json
     ```
 
-### Задание со *
+### Задание со * #1
 dynamic inventory реализован через gce.py
 Запуск ``` ansible-playbook site.yml ``` приводит к наполнению нужных хостов, указаны через anbible группы по типу tag_reddit-app-stage
 

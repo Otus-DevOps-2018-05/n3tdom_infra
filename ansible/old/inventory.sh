@@ -1,14 +1,14 @@
 #!/bin/bash
-#launch example ./get-inventory.sh --list
+#launch example ./inventory.sh --list
 
 #debug
 # set -e
 # echo "Called as: $*" >> inventory.log
 
-if [ "$1" = "--list" ] ; then 
+if [ "$1" = "--list" ] ; then
     cat $(dirname "$0")/inventory.json
 
 elif [ "$1" = "--host" ]; then
-# Not implemented
-    echo "{}"
+    echo "Not implemented"
+    exit -1
 fi

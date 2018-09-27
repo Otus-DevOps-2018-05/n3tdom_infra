@@ -20,4 +20,3 @@ systemctl daemon-reload
 
 #launch
 systemctl enable reddit.service
-systemctl start reddit.service

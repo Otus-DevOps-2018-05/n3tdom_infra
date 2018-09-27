@@ -9,32 +9,14 @@
                 }
             }
         },
-        "all": {
-            "children": [
-                "ungrouped",
-                "app",
-                "db"
-            ],
-            "hosts": [],
-            "vars": {}
-        },
         "app": {
-            "children": [],
             "hosts": [
                 "appserver"
-            ],
-            "vars": {}
+            ]
         },
         "db": {
-            "children": [],
             "hosts": [
                 "dbserver"
-            ],
-            "vars": {}
-        },
-        "ungrouped": {
-            "children": [],
-            "hosts": [],
-            "vars": {}
+            ]
         }
 }

@@ -2,21 +2,24 @@
 n3tdom Infra repository
 - [n3tdom_infra](#n3tdom_infra)
     - [hw-0x шаблон](#hw-0x-шаблон)
-        - [](#)
-        - [Задание со * -](#Задание-со---)
-        - [Задание со ** -](#Задание-со---)
+        - [Основное задание](#Основное-задание)
+        - [Задание со *](#Задание-со-)
+        - [Задание со **](#Задание-со-)
+        - [hw-09 ansible-4](#hw-09-ansible-4)
+        - [Задание со * #1 - Дополните конфигурацию Vagrant для корректной работы проксирования риложения с помощью nginx](#Задание-со--1---Дополните-конфигурацию-vagrant-для-корректной-работы-проксирования-риложения-с-помощью-nginx)
+        - [Задание со * #2 - Вынести роль db в отдельный репозиторий, подключить TravisCI (результат = бейдж билда, слак чат)](#Задание-со--2---Вынести-роль-db-в-отдельный-репозиторий-подключить-travisci-результат--бейдж-билда-слак-чат)
     - [hw-08 ansible-3](#hw-08-ansible-3)
-        - [Основное](#Основное)
+        - [Основное задание](#Основное-задание-1)
         - [Задание со * - Работа с динамическим инвентори](#Задание-со----Работа-с-динамическим-инвентори)
         - [Задание со ** - TravisCI + packer,terraform,ansible](#Задание-со----travisci--packerterraformansible)
     - [hw-07 ansible-2](#hw-07-ansible-2)
-        - [Разделение задач по тегам, плейбукам.](#Разделение-задач-по-тегам-плейбукам)
-        - [Задание со *](#Задание-со-)
-    - [hw-06 ansible-1](#hw-06-ansible-1)
-        - [Плейбук](#Плейбук)
+        - [Основное задание - Разделение задач по тегам, плейбукам.](#Основное-задание---Разделение-задач-по-тегам-плейбукам)
         - [Задание со *](#Задание-со--1)
+    - [hw-06 ansible-1](#hw-06-ansible-1)
+        - [Основное задание - Плейбук](#Основное-задание---Плейбук)
+        - [Задание со *](#Задание-со--2)
     - [hw-05 terraform-1](#hw-05-terraform-1)
-        - [Основное задание](#Основное-задание)
+        - [Основное задание](#Основное-задание-2)
         - [Задание со * - add remote backend](#Задание-со----add-remote-backend)
         - [Задание со ** - add provision](#Задание-со----add-provision)
     - [hw-04 terraform-1](#hw-04-terraform-1)
@@ -36,18 +39,29 @@ n3tdom Infra repository
 
 ---
 ## hw-0x шаблон
-### 
+### Основное задание
 
+### Задание со *
 
-### Задание со * -
-
-### Задание со ** -
+### Задание со **
 
 ---
+### hw-09 ansible-4
+1. Прописан тест на порт mongo в test_default.py
+2. Пакер теперь использует packer_db.yml -> роль db
+packer validate -var-file=./packer/variables.json ./packer/db.json
+
+### Задание со * #1 - Дополните конфигурацию Vagrant для корректной работы проксирования  риложения с помощью nginx
+TODO: Не выполнялось
+
+
+### Задание со * #2 - Вынести роль db в отдельный репозиторий, подключить TravisCI (результат = бейдж билда, слак чат)
+TODO: Не выполнялось
+
 ## hw-08 ansible-3
-### Основное
+### Основное задание
 Разобрались с ролями, окружениями, group_vars
-ansuble vault, 
+ansuble vault,
 
 ### Задание со * - Работа с динамическим инвентори
 - prod и stage окружения используют свои gce.ini + gce.py как инвентарь
@@ -61,7 +75,7 @@ TODO: Не выполнялось
 
 ---
 ## hw-07 ansible-2
-### Разделение задач по тегам, плейбукам. 
+### Основное задание - Разделение задач по тегам, плейбукам.
 - деплой приложения через плейбук
 - сборка пакер образов с использованием плейбуков ансибл. Билд образов нужно производить из корня репозитория
     ```cd n3tdom_infra
@@ -76,7 +90,7 @@ dynamic inventory реализован через gce.py
 
 ---
 ## hw-06 ansible-1
-### Плейбук
+### Основное задание - Плейбук
 После rm директории плейбук отрабатывает, а не просто сообщает о том что репозиторий уже склонирован, поэтому статус меняется на changed
 
 ### Задание со *
@@ -93,7 +107,7 @@ dynamic inventory реализован через gce.py
 - tfstate вынесены на remote-backend, gcs bucket
 
 ### Задание со * - add remote backend
-После добавления backend 
+После добавления backend
 - Состояние обьектов видно при отсутствии локального tfstate
 - В момент ожидания тераформом подтверждения terraform apply создается файл блокировки. Паралельное применение конфигураций не возможно:
 Error: Error locking state: Error acquiring the state lock: writing "gs://n3tdom-stage/tfstate/default.tflock" failed: googleapi: Error 412: Precondition Failed, conditionNotMet
@@ -106,7 +120,6 @@ Error: Error locking state: Error acquiring the state lock: writing "gs://n3tdom
 ## hw-04 terraform-1
 
 ### Самостоятельные задания 1-4
-    
 ### Задание со * -  добавление ssh ключа пользователя appuser1 в метаданные проекта
 - Понять как составить конфиг для параметра было сложнее всего
     https://www.terraform.io/docs/providers/google/r/compute_project_metadata.html
@@ -120,7 +133,7 @@ Error: Error locking state: Error acquiring the state lock: writing "gs://n3tdom
     `google_compute_project_metadata ответчает за раздел ssh-keys
     google_compute_project_metadata_item за раздел metadata`
     Был бы рад узнать лучший способ это выяснить.
-    
+
 - Итем google_compute_project_metadata_item с ключом ssh-keys уникален для проекта, т.е. может быть только один
 - terraform apply ожидаемо стирает добавленный через веб-интерфейс ключ.
 
@@ -233,6 +246,6 @@ ssh_config
 
         ➜  n3tdom_infra git:(cloud-bastion) ✗ ssh gcp-int
         Last login: Sun Jun 24 12:20:30 2018 from 10.166.0.2
-        n3tdom@someinternalhost:~$ 
+        n3tdom@someinternalhost:~$
 
 Источник https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts

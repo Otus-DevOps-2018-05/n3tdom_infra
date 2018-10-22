@@ -12,10 +12,3 @@
     - name: Create ad-hoc group (group all found hosts under inventory group "db" for group_vars)
       group_by:
         key: "db"
-
-#Print gathered facts
-    # - name: Print hostvars
-    #   debug:
-    #     var: hostvars[inventory_hostname]
-
-

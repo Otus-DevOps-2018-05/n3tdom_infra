@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #launch example ./inventory.sh --list
 
 #debug
@@ -7,7 +8,6 @@
 
 if [ "$1" = "--list" ] ; then
     cat $(dirname "$0")/inventory.json
-
 elif [ "$1" = "--host" ]; then
     echo "Not implemented"
     exit -1
